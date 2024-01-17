@@ -38,6 +38,9 @@ We advise to save this catalog as a ‘.cat’ file, in a known location. We wil
 Configuration
 -------------
 
+The next step is to determine the hardware configuration you desire.  This can be a bit confusing, but below are two options that you can use/modify.
+These configurations can be saved directly in your astrid script.  Uusually we name the configurations, such as "psw_HI_config" and "fsw_HI_config" in the examples.
+
 .. tab:: Position-switching (psw)
 
     .. code-block:: python
@@ -45,11 +48,11 @@ Configuration
         # Configuration parameters for spectral line observations of HI using position switching.
 
         psw_HI_config='''
-        receiver        = 'Rcvr1_2'         # Specifies L-Band receiver for HI
-        obstype         = 'Spectroscopy'    # Specifies spectral line observations
-        backend         = 'VEGAS'           # Specifies spectral line backend
-        restfreq        = 1420.4058         # Specifies rest frequency for HI (MHz)
-        deltafreq       = 0.0               # Specifies offsets for each spectral window (MHz)
+        receiver        = 'Rcvr1_2'         # Specifies L-Band receiver, used for most HI observations
+        obstype         = 'Spectroscopy'    # Specifies spectral line observations (required for spectral line observations)
+        backend         = 'VEGAS'           # Specifies spectral line backend (required for spectral line observations)
+        restfreq        = 1420.4058         # Specifies rest frequency for HI (MHz);  This is used for shifting the center of the bands to the correct, redshifted velocities in observations and data reduction
+        deltafreq       = 0.0               # Specifies offsets for each spectral window (MHz).  Here the velocity of the source is known, and the band is centered on that velocity.  
         bandwidth       = 23.44             # Defined by chosen VEGAS mode (MHz)
         nchan           = 32768             # Specifies number of channels in spectral window
         vegas.subband   = 1                 # Specifies single or multiple spectral windows (1 or 8)
